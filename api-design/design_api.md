@@ -1,15 +1,19 @@
 ## REST API Design
 
+- Designing URIs (/products?page=1&pageSize=10)
+- HTTP Methods (GET,POST,PUT,PATCH,DELETE)
+- HTTP Status Codes (200,201,3XX, 400,401,404,429,500)
+- Designing Resources **Association of entities** (e.g. customer and order here - /customers/123/orders )
+- Paging, Sorting e.g /products?sort=price , and Filtering e.g. /customers?state=GA
+- Error handling (http error codes)
+- Caching (client side caching) , header ETag and if-none-match , GET will return 304 if the entity has not changed 
+- Version API (two options: URI, Query String and Header). URI may not be the best and it require change to code. Custom header X-version
+- Logging (trace-id) : as a header to ensure tracking of requests
+- Security - in transit (TLS) and inside security (Option - Auth Tokens (Cookie, Token (JWT- iDaaS),OAuth)
+- Rate Limiting and Throttling
+- async usage if needed anywhere
 
-### 1. HTTP Methods: Common methods include:
-
-- GET: Retrieve a resource.
-- POST: Create a new resource.
-- PUT: Replace an existing resource.
-- PATCH: Update part of a resource.
-- DELETE: Remove a resource.
-
-### 2. Designing URIs
+### 1. Designing URIs
 
 Uniform Resource Identifiers (URIs): Used to identify resources. Should be intuitive and descriptive.
 
@@ -23,9 +27,24 @@ _Example: Use /orders/123 instead of /getOrderDetails/123_.
 
 _Example: /customers/123/orders for orders belonging to a specific customer._
 
-Query Parameters: Use for optional information, such as filtering, sorting, and paging.
+Query Parameters: Use for **optional information**, such as filtering, sorting, and paging.
 
-Example: /products?page=1&pageSize=10.
+Example: /products?page=1&pageSize=10
+Example: /customers/2?includeProject=True
+
+### 2. HTTP Methods: Common methods include:
+
+- GET: Retrieve a resource.
+- POST: Create a new resource.
+- PUT: Replace an existing resource.
+- PATCH: Update part of a resource.
+- DELETE: Remove a resource.
+
+
+| Endpoint        | GET            | POST             | PUT              | PATCH            | DELETE                                       |
+|-----------------|----------------|------------------|------------------|------------------|----------------------------------------------|
+| `/customers`    | Retrieve list of customers | Create a new customer | N/A | N/A | Error as onc should not delete all customers |
+| `/customers/{id}` | Retrieve a specific customer by ID | N/A | Update a customer by ID | Partially update a customer by ID | Delete a customer by ID                      |
 
 ### 3. HTTP Status Codes
 
@@ -44,6 +63,8 @@ Example: /products?page=1&pageSize=10.
 401 Unauthorized: Authentication is needed.
 
 404 Not Found: Resource could not be found.
+
+429 Too Many Request : Repond with **Retry-After** indicating when the client should retry again.
 
 5xx Server Errors: Indicate problems with the server.
 
