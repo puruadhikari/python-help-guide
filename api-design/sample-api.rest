@@ -1,0 +1,53 @@
+@site = https://restdesign.dev
+
+# to get all customers or one customer
+GET {{site}}/api/customers/26
+Accept: : application/xml
+
+###
+# to get customer with optional parameters
+GET {{site}}/api/customers/2?includeProjects=true
+Accept: : application/json
+
+###
+
+# to post to collections
+POST {{site}}/api/customers/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "companyName": "Cummerata1 Inc",
+  "contact": "Kiera Schuster1",
+  "phoneNumber": "1379-573-2893",
+  "email": null,
+  "addressLine1": "83556 Geo Mount1",
+  "addressLine2": null,
+  "addressLine3": null,
+  "city": "East Kayley1",
+  "stateProvince": "CT",
+  "postalCode": "43670-27321",
+  "country": "USA",
+  "projects": []
+}
+###
+
+PUT {{site}}/api/customers/26
+Accept: application/json
+Content-Type: application/json
+
+{
+    "id":26,
+  "companyName": "Cummerata2 Inc",
+  "contact": "Kiera Schuster2",
+  "phoneNumber": "2379-573-2893",
+  "email": null,
+  "addressLine1": "83556 Geo Mount1",
+  "addressLine2": null,
+  "addressLine3": null,
+  "city": "East Kayley2",
+  "stateProvince": "CT",
+  "postalCode": "43670-27321",
+  "country": "USA",
+  "projects": []
+}
