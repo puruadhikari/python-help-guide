@@ -1,3 +1,4 @@
+# This is a DFS for matrix
 def is_safe_to_visit(m_grid, r, c, visited, ROW, COL):
     # Check if the cell is within bounds, is '1', and has not been visited
     return (0 <= r < ROW) and (0 <= c < COL) and (m_grid[r][c] == '1' and not visited[r][c])
