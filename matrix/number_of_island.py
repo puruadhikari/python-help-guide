@@ -1,53 +1,37 @@
-# This is a DFS for matrix
-def is_safe_to_visit(m_grid, r, c, visited, ROW, COL):
-    # Check if the cell is within bounds, is '1', and has not been visited
-    return (0 <= r < ROW) and (0 <= c < COL) and (m_grid[r][c] == '1' and not visited[r][c])
+grid = [
+    ["1", "1", "0", "0", "0"],
+    ["1", "1", "0", "0", "0"],
+    ["0", "0", "1", "0", "0"],
+    ["0", "0", "0", "1", "1"]
+]
+
+visited = set()
 
 
-def dfs(matrix, row, column, visited, ROW, COL):
-    # Define directions for 8 neighboring cells (diagonal, horizontal, vertical)
-    r_nbr = [-1, -1, -1, 0, 0, 1, 1, 1]
-    c_nbr = [-1, 0, 1, -1, 1, -1, 0, 1]
+def number_of_island(grid1):
+    number_island = 0
 
-    # Mark the cell as visited
-    visited[row][column] = True
+    for row_val in range(len(grid1)):
+        for col_val in range(len(grid1[0])):
+            if grid1[row_val][col_val] == "1" and (row_val, col_val) not in visited:
+                dfs(row_val, col_val, grid1, visited)
+                number_island += 1
 
-    # Explore all 8 neighbors
-    for index in range(8):
-        n_row = row + r_nbr[index]
-        n_column = column + c_nbr[index]
-
-        # Check if the neighbor is safe to visit
-        if is_safe_to_visit(matrix, n_row, n_column, visited, ROW, COL):
-            dfs(matrix, n_row, n_column, visited, ROW, COL)
+    return number_island
 
 
-def count_islands(grid):
-    # Handle edge case of empty grid
-    if not grid or not grid[0]:
-        return 0
+def dfs(row, col, matrix, visited):
+    m = len(matrix)
+    n = len(matrix[0])
+    if row < 0 or row >= m or n < 0 or col >= n or (row, col) in visited or matrix[row][col] == "0":
+        return
 
-    ROW = len(grid)
-    COL = len(grid[0])
-    count = 0
-    # Initialize the visited matrix
-    visited = [[False for _ in range(COL)] for _ in range(ROW)]
+    visited.add((row, col))
 
-    # Iterate over each cell in the grid
-    for r in range(ROW):
-        for c in range(COL):
-            # Start a DFS if we find an unvisited '1' cell
-            if grid[r][c] == '1' and not visited[r][c]:
-                dfs(grid, r, c, visited, ROW, COL)
-                count += 1  # Increment count for each new island found
-    return count
+    dfs(row, col - 1, matrix, visited)  # left
+    dfs(row - 1, col, matrix, visited)  # top
+    dfs(row, col + 1, matrix, visited)  # right
+    dfs(row + 1, col, matrix, visited)  # down
 
 
-grid = [['1', '1', '0', '0', '0'],
-        ['0', '1', '0', '0', '1'],
-        ['1', '0', '0', '1', '1'],
-        ['0', '0', '0', '0', '0'],
-        ['1', '0', '1', '1', '0']]
-
-# Test the function
-print(count_islands(grid))  # Expected output: 3
+print("Number of island are : ", number_of_island(grid))
