@@ -1,22 +1,35 @@
-from collections import Counter
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
-s = "aab"
 
-s_lst = Counter(list(s))
+node = ListNode(1)
+node.next = ListNode(2)
+node.next.next = ListNode(3)
+node.next.next.next = ListNode(4)
+node.next.next.next.next = ListNode(5)
 
-print(s_lst.values())
-
-a_set = set(s_lst.values())
+fast = node
+slow = node
+k = 3
 
 counter = 0
-
-for item in s_lst.values():
-  while item in a_set and len(a_set) <= len(s_lst.values()):
-    item = item-1
+while counter < k - 1:
+    fast = fast.next
     counter += 1
-    if item not in a_set:
-      a_set.add(item)
-      print(item,a_set)
-    break
 
-print(counter)
+while fast:
+    slow = slow.next
+    fast = fast.next
+    prev = slow
+
+temp = slow.next
+prev.next = temp
+temp.next = None
+
+while prev:
+    print(prev.val)
+    prev = prev.next
+
+
