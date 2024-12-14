@@ -16,7 +16,7 @@ Explanation: All the valid concatenations are:
 - "ue"
 - "uniq" ("un" + "iq")
 - "ique" ("iq" + "ue")
-Maximum length is 4.
+Maximum length is 4 .
 """
 
 arr_1 = ["un", "iq", "ue"]

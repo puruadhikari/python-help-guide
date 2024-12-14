@@ -1,18 +1,22 @@
-# This is a sample Python script.
+from collections import Counter
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+s = "aab"
 
+s_lst = Counter(list(s))
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-    nums = [5, 7, 7, 8, 8, 10]
-    print(nums.index(6))
+print(s_lst.values())
 
+a_set = set(s_lst.values())
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+counter = 0
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+for item in s_lst.values():
+  while item in a_set and len(a_set) <= len(s_lst.values()):
+    item = item-1
+    counter += 1
+    if item not in a_set:
+      a_set.add(item)
+      print(item,a_set)
+    break
+
+print(counter)
