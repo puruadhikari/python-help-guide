@@ -1,35 +1,29 @@
-class ListNode(object):
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+prerequisites = [[1, 0]]  # [[0, 1], [1, 2], [2, 3], [3, 1], [4, 2]]
+
+course = {}
+
+for item, value in prerequisites:
+    if item not in course:
+        course[item] = [value]
+    else:
+        course[item].append(value)
 
 
-node = ListNode(1)
-node.next = ListNode(2)
-node.next.next = ListNode(3)
-node.next.next.next = ListNode(4)
-node.next.next.next.next = ListNode(5)
+def dfs(graph, start, visited=None):
+    if not visited:
+        visited = set()
 
-fast = node
-slow = node
-k = 3
+    visited.add(start)
+    print(start)
 
-counter = 0
-while counter < k - 1:
-    fast = fast.next
-    counter += 1
-
-while fast:
-    slow = slow.next
-    fast = fast.next
-    prev = slow
-
-temp = slow.next
-prev.next = temp
-temp.next = None
-
-while prev:
-    print(prev.val)
-    prev = prev.next
+    for nodes in graph[start]:
+        if nodes not in visited and start in graph:
+            dfs(graph, nodes, visited)
+        else:
+            return False
 
 
+if dfs(course, prerequisites[0][0]):
+    print("no cyclic")
+else:
+    print("cyclic")
