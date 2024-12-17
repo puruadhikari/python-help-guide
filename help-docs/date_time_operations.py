@@ -1,5 +1,14 @@
 from datetime import datetime, date, time, timedelta
 
+current_time = "10:00"
+mid_night = "00:00"
+
+current_time_formated = datetime.strptime("10:00","%H:%M")
+mid_night_formated = datetime.strptime("00:00","%H:%M")
+
+duration = current_time_formated-mid_night_formated
+print(duration.seconds)
+
 # Current Date and Time
 now = datetime.now()             # Get current date and time
 today = date.today()             # Get current date

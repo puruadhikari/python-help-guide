@@ -44,6 +44,9 @@ From 'A', we also had 'C' as a neighbor, but it’s already visited.
 We visited all nodes in the order: A -> B -> D -> C.
 
 """
+from collections import deque
+
+from matrix.number_of_island import visited
 
 
 def dfs(graph, start, visited=None):
@@ -56,6 +59,19 @@ def dfs(graph, start, visited=None):
         if neighbor not in visited:
             dfs(graph, neighbor, visited)
 
+
+def bfs(graph,start=None):
+    # define queue
+    queue = deque([start])
+    visited = set()
+    while queue:
+        current = queue.popleft()
+        print(current)
+        visited.add(current)
+        nodes = graph[current]
+        for node in nodes:
+            if node not in visited:
+                queue.append(node)
 
 edges = [
     ("A", "B"),
@@ -78,3 +94,6 @@ for start, end in edges:
 
 # Run the DFS
 dfs(graph, "A")
+
+# Run the BFS
+bfs(graph,"A")
