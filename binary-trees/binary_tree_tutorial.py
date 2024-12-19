@@ -17,7 +17,7 @@ Postorder Traversal (Visit Left, Right, Root)
    4   5   6
 
 """
-
+from collections import deque
 
 class TreeNode:
     def __init__(self, value, left=None, right=None):
@@ -39,7 +39,20 @@ def dfs(node: TreeNode):
         return
 
     dfs(node.left)
-    print(node.value, end="")
+    print(node.value, end="-")
     dfs(node.right)
 
+def bfs(node):
+    queue = deque([node])
+
+    while queue:
+        current = queue.popleft()
+        print(current.value,end = "-")
+        if current.left:
+            queue.append(current.left)
+        if current.right:
+            queue.append(current.right)
+
 dfs(root)
+print("--")
+bfs(root)
