@@ -33,8 +33,13 @@ def dfs(graph1, number):
     if number not in graph1:
         return number
 
+    # earliest_ancestor = None
     for items in graph1[number]:
         ancestor = dfs(graph1, items)
+
+    # # edge case when two items are found but not sure.
+    # if earliest_ancestor is None or ancestor < earliest_ancestor:
+    #     earliest_ancestor = ancestor
 
     return ancestor
 

@@ -46,8 +46,6 @@ We visited all nodes in the order: A -> B -> D -> C.
 """
 from collections import deque
 
-from matrix.number_of_island import visited
-
 
 def dfs(graph, start, visited=None):
     if visited is None:
