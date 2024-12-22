@@ -39,3 +39,7 @@ class Solution(object):
             right += 1
 
         return max_profit
+
+prices1 = [7,6,4,3,1]
+sol = Solution()
+print(sol.maxProfit(prices1))
