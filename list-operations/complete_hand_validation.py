@@ -26,16 +26,22 @@ def complete_hand_validation(input_string):
     pair_count = 0
     valid_values = {2, 3}
 
-    for item in nums.values():
-        if item == 2:
-            pair_count += 1
+    nums = Counter(input_string)
+    has_pair = False
 
-        if pair_count > 1:
+    for count in nums.values():
+        # Check for a pair
+        if count % 3 == 2:  # Leaves a remainder of 2 when divided by 3
+            if has_pair:
+                return False  # More than one pair is invalid
+            has_pair = True
+            count -= 2  # Remove the pair
+
+        # Check if the remaining count is divisible by 3
+        if count % 3 != 0:
             return False
 
-        if item not in valid_values:
-            return False
+    # There must be exactly one pair
+    return has_pair
 
-    return True
-
-print(complete_hand_validation("678999"))
+print(complete_hand_validation("7777777788"))

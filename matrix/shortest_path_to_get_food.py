@@ -15,7 +15,7 @@ def find_steps(grid):
                 break
 
     queue = deque([(start[0], start[1], 0)])
-
+    
     visited = set()
     visited.add((row, col))
 
