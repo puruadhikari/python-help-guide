@@ -17,6 +17,7 @@ Postorder Traversal (Visit Left, Right, Root)
    4   5   6
 
 """
+from collections import deque
 
 
 class TreeNode:
@@ -26,6 +27,32 @@ class TreeNode:
         self.right = right
 
 
+def dfs(node: TreeNode):
+    if not node:
+        return
+
+    dfs(node.left)
+    print(node.value, end=" ")
+    dfs(node.right)
+
+
+def bfs_binary_tree(root):
+    if not root:
+        return  # If the tree is empty, return immediately
+
+    queue = deque([root])  # Initialize the queue with the root node
+
+    while queue:
+        current = queue.popleft()  # Dequeue the first node in the queue
+        print(current.value, end=" ")  # Visit the node
+
+        # Enqueue left and right children if they exist
+        if current.left:
+            queue.append(current.left)
+        if current.right:
+            queue.append(current.right)
+
+
 root = TreeNode(1)
 root.left = TreeNode(2)
 root.right = TreeNode(3)
@@ -33,13 +60,5 @@ root.left.left = TreeNode(4)
 root.left.right = TreeNode(5)
 root.right.right = TreeNode(6)
 
-
-def dfs(node: TreeNode):
-    if not node:
-        return
-
-    dfs(node.left)
-    print(node.value, end="")
-    dfs(node.right)
-
 dfs(root)
+bfs_binary_tree(root)
