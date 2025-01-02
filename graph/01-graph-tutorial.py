@@ -78,7 +78,7 @@ edges = [
     ("B", "A"),
     ("C", "D"),
     ("C", "A"),
-    ("D", "A"),
+    ("D", "B"),
     ("D", "C")
 ]
 
@@ -90,8 +90,9 @@ for start, end in edges:
     else:
         graph[start].append(end)
 
+print(graph)
 # Run the DFS
-dfs(graph, "A")
+#dfs(graph, "A")
 
 # Run the BFS
 bfs(graph,"A")
