@@ -41,6 +41,8 @@ class Solution(object):
             graph[prereq].append(course)
             pre_req_list[course] += 1
 
+        print(graph)
+        print(pre_req_list)
         queue = deque()
 
         for item in pre_req_list:
@@ -58,3 +60,7 @@ class Solution(object):
                     queue.append(nodes)
 
         return course_counter == numCourses
+
+sol = Solution()
+
+print(sol.can_finish(4,[[1,0], [2,0], [3,1], [3,2]]))

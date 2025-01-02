@@ -13,8 +13,8 @@ Output: 5
 Explanation: The repeated subarray with maximum length is [0,0,0,0,0].
 """
 
-nums1 = [0,0,0,0,0]
-nums2 = [0,0,0,0,0]
+nums1 = [1,2,3,2,1]
+nums2 = [3,2,1,4,7]
 
 class Solution(object):
     def find_length(self, nums1, nums2):

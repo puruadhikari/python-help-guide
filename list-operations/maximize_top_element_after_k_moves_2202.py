@@ -1,5 +1,6 @@
 """
-You are given a 0-indexed integer array nums representing the contents of a pile, where nums[0] is the topmost element of the pile.
+You are given a 0-indexed integer array nums representing the contents of a pile,
+where nums[0] is the topmost element of the pile.
 
 In one move, you can perform either of the following:
 

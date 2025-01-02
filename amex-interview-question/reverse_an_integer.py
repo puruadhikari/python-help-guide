@@ -17,4 +17,27 @@ def reverse(x):
 
     return is_negative * return_num
 
+
+def reverse_integer(val):
+    result = 0
+    is_nagetive = False
+
+    if val < 0:
+        is_nagetive = True
+        val = -1 * val
+
+    while val // 10 > 0:
+        bal = val // 10
+        reminder = val % 10
+        result = result * 10 + reminder * 10
+        val = bal
+
+    if is_nagetive:
+        return -1 * (result + bal)
+
+    return result + bal
+
+
+print(reverse_integer(-5684300))
+
 print(reverse(-5684300))

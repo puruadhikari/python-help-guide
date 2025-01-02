@@ -30,7 +30,10 @@ def count_max_length(arr):
 
     for item in arr:
         a_dict[item] = set(list(item))
+
+    print(a_dict)
     max_length = 0
+
     for outer in range(len(arr)):
         for inner in range(outer + 1, len(arr)):
             result = len(a_dict[arr[outer]].intersection(a_dict[arr[inner]]))

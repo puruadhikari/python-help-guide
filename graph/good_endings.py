@@ -46,7 +46,7 @@ def find_good_endings(good_endings, bad_endings, choices):
     for page, good, bad in choices:
         graph[page] = [good, bad]
 
-    #print(graph)
+    print(graph)
 
     start = 3
     result = []
