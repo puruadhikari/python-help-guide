@@ -23,7 +23,7 @@ def number_of_island(grid1):
 def dfs(row, col, matrix, visited):
     m = len(matrix)
     n = len(matrix[0])
-    if row < 0 or row >= m or n < 0 or col >= n or (row, col) in visited or matrix[row][col] == "0":
+    if row < 0 or row >= m or col < 0 or col >= n or (row, col) in visited or matrix[row][col] == "0":
         return
 
     visited.add((row, col))

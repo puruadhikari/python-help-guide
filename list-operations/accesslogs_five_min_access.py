@@ -30,7 +30,7 @@ logs1 = [    ["58523", "user_1", "resource_1"],
     ["100",   "user_8", "resource_6"],
     ["54359", "user_1", "resource_3"]
 ]
-("resource_3", 4)
+("resource_3", 2)
 """
 from collections import defaultdict
 
@@ -51,17 +51,22 @@ logs = [["58523", "user_1", "resource_1"],
         ]
 
 
-def count_five_minutes(time_list):
-    counter = 0
-    if len(time_list) == 1:
-        return 0
-
-    for index in range(1, len(time_list)):
-        if time_list[index] - time_list[index - 1] <= 300:
-            # print(time_list[index],time_list[index-1],time_list[index]-time_list[index-1])
+def count_five_minutes(entries):
+    start = 0
+    end = 1
+    max_value = 0
+    counter = 1
+    while end < len(entries):
+        if entries[end] - entries[start] <= 300:
             counter += 1
+            end += 1
+        else:
+            start = end
+            end += 1
+            max_value = max(max_value, counter)
+            counter = 1
 
-    return counter
+    return max_value
 
 
 result = defaultdict(list)
@@ -71,14 +76,15 @@ for time, user, resource in logs:
 
 output = []
 
+
 for key, values in result.items():
     values.sort()
     result[key] = values
-
+print(result)
 for key, values in result.items():
     five_min_counter = count_five_minutes(values)
     output.append((key, five_min_counter))
-
+print(output)
 output.sort(key=lambda x: x[1], reverse=True)
 
 print(output[0])
