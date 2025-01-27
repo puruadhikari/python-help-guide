@@ -23,10 +23,6 @@ from collections import Counter
 
 def complete_hand_validation(input_string):
     nums = Counter(input_string)
-    pair_count = 0
-    valid_values = {2, 3}
-
-    nums = Counter(input_string)
     has_pair = False
 
     for count in nums.values():
@@ -44,4 +40,4 @@ def complete_hand_validation(input_string):
     # There must be exactly one pair
     return has_pair
 
-print(complete_hand_validation("7777777788"))
+print(complete_hand_validation("777777788"))

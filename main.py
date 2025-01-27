@@ -1,23 +1,26 @@
-n =3
-from collections import deque
+s = "3[a]12[bc]"
+# Output: "aaabcbc"
 
-queue = deque([("", 0, 0)])  # Start with an empty string and 0 open/close parentheses
-result = []
+count_stack = []
+string_stack = []
 
-while queue:
-    current, open_count, close_count = queue.popleft()
+current_string = ""
+current_count = 0
 
-    # If the current string is complete, add it to the result
-    if len(current) == 2 * n:
-        result.append(current)
-        continue
+for char in s:
+    if char.isdigit():
+        current_count = int(current_count)*10+int(char)
+    elif char == "[":
+        string_stack.append(current_string)
+        count_stack.append(current_count)
 
-    # Add an opening parenthesis if valid
-    if open_count < n:
-        queue.append((current + "(", open_count + 1, close_count))
+        current_count = 0
+        current_string = ""
+    elif char == "]":
+        number = count_stack.pop()
+        previous_string = string_stack.pop()
+        current_string = previous_string + current_string * number
+    else:
+        current_string += char
 
-    # Add a closing parenthesis if valid
-    if close_count < open_count:
-        queue.append((current + ")", open_count, close_count + 1))
-
-print(result)
+print(current_string)
