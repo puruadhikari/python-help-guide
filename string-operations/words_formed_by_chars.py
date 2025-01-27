@@ -21,11 +21,12 @@ for word in words:
     word_dict = Counter(word)
 
     for char in word_dict:
-        if word_dict[char] > char_dict.get(char,0):
+        if word_dict[char] > char_dict[char]:
             can_form = False
             break
 
     if can_form:
+        print(word)
         count += len(word)
 
 print(count)

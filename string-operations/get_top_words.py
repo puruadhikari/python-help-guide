@@ -25,7 +25,8 @@ s1 = "apple,300 banana,400 apple,500 cherry,200"
 """
 from collections import defaultdict
 
-s1 = "abc,500 sadhasibkedsak,230239203 fsgdfssd,78 sss,56 ss,56 sss,5678 sssdsds,56 ssssdsd,56"
+#s1 = "abc,500 sadhasibkedsak,230239203 fsgdfssd,78 sss,56 ss,56 sss,5678 sssdsds,56 ssssdsd,56"
+s1 = "apple,300 banana,400 apple,500 cherry,200"
 wordLimit1 = 3
 minWordLength1 = 5
 

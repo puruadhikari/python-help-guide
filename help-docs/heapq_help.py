@@ -2,7 +2,7 @@ import heapq
 
 nums = [6, 7, 9, 4, 3, 5, 8, 10, 1]
 
-#heapq.heapify(nums)
+heapq.heapify(nums)
 
 print(nums) # prints - [1, 3, 5, 4, 6, 9, 8, 10, 7]
 

@@ -69,4 +69,4 @@ def disappear(grid, row,col):
     return res
 
 
-print(disappear(grid1, 2,2))
+print(disappear(grid1, 0,0))

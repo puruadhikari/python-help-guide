@@ -63,7 +63,6 @@ def find_paths(paths):
         return set(temp_result)
 
     result = {}
-
     for items in start_set:
         visited = set()
         temp_result = []
