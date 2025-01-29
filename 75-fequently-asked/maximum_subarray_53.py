@@ -27,3 +27,6 @@ class Solution(object):
             for j in range(1, len(nums)):
                 max_val = max(sum(nums[i:j + 1]), max_val)
         return max_val
+
+sol = Solution()
+print(sol.max_subarray_brute_force(nums = [-2,1,-3,4,-1,2,1,-5,4]))
