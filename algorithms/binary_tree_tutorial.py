@@ -61,4 +61,5 @@ root.left.right = TreeNode(5)
 root.right.right = TreeNode(6)
 
 dfs(root)
+print("")
 bfs_binary_tree(root)

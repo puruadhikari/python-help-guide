@@ -44,4 +44,32 @@ def dfs(graph1, number):
     return ancestor
 
 
+from collections import defaultdict, deque
+
+
+def bfs(parentChildPairs, target):
+    graph = defaultdict(list)
+    start_val = -1
+    graph1 = defaultdict(list)
+    for start, end in parentChildPairs:
+        graph[start].append(end)
+        graph1[end].append(start)
+
+    for node, items in graph.items():
+        if node == target or target in items:
+            start_val = node
+            break
+
+    queue = deque()
+    queue.append(start_val)
+
+    while queue:
+        anc_node = queue.popleft()
+        for item in graph1[anc_node]:
+            queue.append(item)
+    return anc_node
+
+
+print(bfs(parentChildPairs1, 15))
+
 print(find_earliest_ancestor(parentChildPairs1, 8))
