@@ -52,5 +52,5 @@ def dfs_traversal(matrix):
     dfs(0,0)
     return result
 
-#print(bfs_traversal(matrix, 0, 0))
+print(bfs_traversal(matrix, 0, 0))
 print(dfs_traversal(matrix))

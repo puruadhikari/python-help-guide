@@ -11,6 +11,7 @@ Input: matrix = [[1,1,1],[1,2,3],[1,2,3]]
 Output: false
 Explanation: In this case, n = 3, but the first row and the first column do not contain the numbers 2 or 3.
 Hence, we return false.
+NOTE : zip(*matrix) gives the transposed matrix as tuple of columns
 """
 
 
@@ -21,11 +22,12 @@ class Solution(object):
         :rtype: bool
         """
         n = len(matrix)
+        for row in matrix:
+            if set(row) != set(range(1, n + 1)):
+                return False
 
-        sum_number = (n * (n + 1)) / 2
-
-        for items in matrix:
-            if sum(items) != sum_number:
+        for col in zip(*matrix):
+            if set(col) != set(range(1, n + 1)):
                 return False
         return True
 

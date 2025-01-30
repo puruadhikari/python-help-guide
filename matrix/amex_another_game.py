@@ -36,6 +36,15 @@ grid1 = [
     [5, 5, 5, 4],
     [2, 5, 7, 5]
 ]
+
+grid2 = [
+    [0, 3, 3, 3, 3, 3, 3],
+    [0, 1, 1, 1, 1, 1, 3],
+    [0, 2, 2, 0, 2, 1, 4],
+    [0, 1, 2, 2, 2, 1, 3],
+    [0, 1, 1, 1, 1, 1, 3],
+    [0, 0, 0, 0, 0, 0, 0]
+]
 counter = 0
 visited = set()
 #result=[]
@@ -69,4 +78,4 @@ def disappear(grid, row,col):
     return res
 
 
-print(disappear(grid1, 0,0))
+print(disappear(grid2, 1,1))

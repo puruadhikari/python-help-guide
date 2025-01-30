@@ -9,14 +9,14 @@ Choices: A list of decisions at specific pages that dictate where the story bran
 
 Inputs:
 good_endings: A list of pages where the story ends positively.
-
 Example: [10, 15, 25, 34]
+
 bad_endings: A list of pages where the story ends negatively.
-
 Example: [21, 30, 40]
-choices: A list of lists where each entry represents a page with choices and the possible pages you can move to.
 
+choices: A list of lists where each entry represents a page with choices and the possible pages you can move to.
 Example: choices = [[3, 16, 24], [16, 17, 21], [24, 25, 30]]
+
 This means:
 From page 3, you can go to pages 16 or 24.
 From page 16, you can go to pages 17 or 21.
@@ -36,10 +36,35 @@ choices = [[3, 16, 24], [16, 17, 21], [24, 25, 30]]
 [25]
 
 """
+from collections import deque, defaultdict
 
 good_endings = [10, 15, 25, 34]
 bad_endings = [21, 30, 40]
 choices = [[3, 16, 24], [16, 17, 21], [24, 25, 30]]
+
+def find_good_endings_bfs(good_endings, bad_endings, choices):
+    graph = defaultdict(list)
+
+    for page, good, bad in choices:
+        graph[page].append(good)
+        graph[page].append(bad)
+
+    start = 3
+    queue = deque()
+
+    queue.append(start)
+    result = []
+    while queue:
+        current = queue.popleft()
+
+        for endings in graph[current]:
+            if endings in good_endings:
+                result.append(endings)
+            queue.append(endings)
+
+    return result
+
+print(find_good_endings_bfs(good_endings, bad_endings, choices))
 
 def find_good_endings(good_endings, bad_endings, choices):
     graph = {}

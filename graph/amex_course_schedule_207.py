@@ -20,16 +20,11 @@ Output: false
 Explanation: There are a total of 2 courses to take.
 To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.
 """
-from collections import deque
+from collections import deque,defaultdict
 
 
 class Solution(object):
     def can_finish(self, numCourses, prerequisites):
-        """
-        :type numCourses: int
-        :type prerequisites: List[List[int]]
-        :rtype: bool
-        """
         graph = {}
 
         for index in range(numCourses):

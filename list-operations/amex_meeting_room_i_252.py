@@ -10,6 +10,7 @@ Example 2:
 
 Input: intervals = [[7,10],[2,4]]
 Output: true
+NOTE: first sort the items based on start time
 """
 intervals1 = [[7,10],[2,4]]
 

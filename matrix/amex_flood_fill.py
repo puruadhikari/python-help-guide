@@ -1,5 +1,7 @@
 """
-You are given an image represented by an m x n grid of integers image, where image[i][j] represents the pixel value of the image. You are also given three integers sr, sc, and color. Your task is to perform a flood fill on the image starting from the pixel image[sr][sc].
+You are given an image represented by an m x n grid of integers image, where image[i][j] represents
+the pixel value of the image. You are also given three integers sr, sc, and color.
+Your task is to perform a flood fill on the image starting from the pixel image[sr][sc].
 
 To perform a flood fill:
 
@@ -10,7 +12,6 @@ Keep repeating this process by checking neighboring pixels of the updated pixels
 it matches the original color of the starting pixel.
 The process stops when there are no more adjacent pixels of the original color to update.
 Return the modified image after performing the flood fill.
-
 
 
 Example 1:
@@ -31,19 +32,48 @@ def flood_fill(grid, sr, sc, color):
         m = len(grid)
         n = len(grid[0])
 
-        if r < 0 or r >= m or c < 0 or c >= n or grid[r][c] == color or grid[r][c]==0:
+        if r < 0 or r >= m or c < 0 or c >= n or grid[r][c] == color or grid[r][c] == 0:
             return
 
         grid[r][c] = color
 
-        dfs(grid, r, c - 1,2)  # left
-        dfs(grid, r - 1, c,2)  # top
-        dfs(grid, r, c + 1,2)  # right
-        dfs(grid, r + 1, c,2)  # bottom
+        dfs(grid, r, c - 1, 2)  # left
+        dfs(grid, r - 1, c, 2)  # top
+        dfs(grid, r, c + 1, 2)  # right
+        dfs(grid, r + 1, c, 2)  # bottom
 
     dfs(grid, 1, 1, 1)
 
     return grid
+
+
+from collections import deque
+
+
+def flood_fill_bfs(matrix, r, c, color):
+    start_pixel = matrix[r][c]
+    m = len(matrix)
+    n = len(matrix[0])
+
+    queue = deque()
+    visited = set()
+
+    queue.append((r, c))
+    visited.add((r, c))
+
+    while queue:
+        row, col = queue.popleft()
+
+        if matrix[row][col] == start_pixel:
+            matrix[row][col] = color
+
+        for dr, dc in [(0, -1), (-1, 0), (0, 1), (1, 0)]:
+            nr, nc = row + dr, col + dc
+            if 0 <= nr < m and 0 <= nc < n and (nr, nc) not in visited and matrix[nr][nc] == start_pixel:
+                queue.append((nr, nc))
+                visited.add((nr, nc))
+
+    return matrix
 
 
 print(flood_fill(image, sr, sc, color))

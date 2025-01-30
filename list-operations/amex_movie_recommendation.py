@@ -29,7 +29,7 @@ def movie_recommendations(user, ratings) -> list:
         for user_1, movies_1 in user_dict.items():
             if user_1 != user and rated_movie in movies_1:
                 movie_set[user] = movies_1
-
+    print(movie_set)
     if user in movie_set:
         list1 = movie_set[user]
     else:
@@ -55,5 +55,29 @@ ratings = [
 ]
 
 user = "Bob"
+
+movie_user = defaultdict(list)
+user_movie = defaultdict(list)
+
+for name,movie,rating in ratings:
+  if int(rating) >= 4:
+    movie_user[name].append(movie)
+    user_movie[movie].append(name)
+
+movies_by_user = movie_user[user]
+
+rated_users = set()
+movies_set = set()
+for movie in movies_by_user:
+  for usr in user_movie[movie]:
+    if usr != user:
+      rated_users.add(usr)
+
+
+for usr_1 in rated_users:
+  for movi in movie_user[usr_1]:
+    movies_set.add(movi)
+
+print(movies_set-set(movies_by_user))
 
 print(movie_recommendations(user, ratings))

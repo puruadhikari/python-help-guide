@@ -1,5 +1,6 @@
 """
-You are given an array of strings arr. A string s is formed by the concatenation of a subsequence of arr that has unique characters.
+You are given an array of strings arr. A string s is formed by the concatenation of a
+subsequence of arr that has unique characters.
 
 Return the maximum possible length of s.
 
@@ -22,6 +23,7 @@ def max_length(arr):
     for s in unique_strings:
         for combination in combinations.copy():
             new_combination = combination+s
+            print(new_combination)
             if len(new_combination) == len(set(new_combination)):
                 combinations.append(new_combination)
                 max_val = max(max_val,len(new_combination))
