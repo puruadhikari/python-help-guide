@@ -42,7 +42,7 @@ def find_word_location(grid, word):
     for row in range(len(grid)):
         for col in range(len(grid[0])):
             if grid[row][col] == word[0]:
-                result = []  # THIS MUST BE DEFINED HERE NOT OUTSIDE
+                result = []  # NOTE THIS MUST BE DEFINED HERE NOT OUTSIDE
                 if dfs(grid, row, col, word, result, visited, 0):
                     return result
 

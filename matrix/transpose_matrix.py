@@ -14,6 +14,9 @@ matrix = [
     [4, 5, 6,1],
     [7, 8, 9,1]
 ]
+trans = zip(*matrix)
+for rows in trans:
+    print(rows)
 
 transposed_matrix = []
 for i in range(len(matrix[0])):

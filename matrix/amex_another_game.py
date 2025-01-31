@@ -47,10 +47,33 @@ grid2 = [
 ]
 counter = 0
 visited = set()
-#result=[]
-# disappear(grid1, 0, 0)  # Expected Output: 5
-# disappear(grid1, 1, 1)  # Expected Output: 4
-# disappear(grid1, 1, 0)  # Expected Output: 4
+from collections import deque
+
+def another_game_bfs(matrix, target):
+    queue = deque()
+    visited_bfs = set()
+    m = len(matrix)
+    n = len(matrix[0])
+
+    result = []
+    for i in range(m):
+        for j in range(n):
+            if matrix[i][j] == target:
+                queue.append((i, j))
+                visited_bfs.add((i, j))
+                break
+
+    while queue:
+        row, col = queue.popleft()
+        result.append((row, col))
+
+        # left,top,right,down
+        for dr, dc in [(0, -1), (-1, 0), (0, 1), (1, 0)]:
+            nr, nc = row + dr, col + dc
+            if nr >= 0 and nr < m and nc >= 0 and nc < n and (nr, nc) not in visited_bfs and matrix[nr][nc] == target:
+                queue.append((nr, nc))
+                visited_bfs.add((nr, nc))
+    return result
 
 def dfs(grd, r, c, num,visited,result=[]):
     m = len(grd)
@@ -79,3 +102,4 @@ def disappear(grid, row,col):
 
 
 print(disappear(grid2, 1,1))
+print(another_game_bfs(grid2,1))
