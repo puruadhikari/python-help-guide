@@ -12,6 +12,32 @@ grid1 = [
 word1 = "catnip"
 visited = set()
 
+from collections import deque
+
+
+def find_word_bfs(matrix, word):
+    m = len(matrix)
+    n = len(matrix[0])
+    for i in range(m):
+        for j in range(n):
+            if matrix[i][j] == word[0]:
+                queue = deque()
+                queue.append((i, j, [(i, j)], 0))
+
+                while queue:
+                    row, col, path, index = queue.popleft()
+                    if index == len(word) - 1:
+                        return path
+
+                    for dr, dc in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
+                        nr, nc = row + dr, col + dc
+                        if nr >= 0 and nr < m and nc >= 0 and nc < n and matrix[nr][nc] == word[index + 1]:
+                            #NOTE path + [(nr,nc)] creates a new list with a path
+                            queue.append((nr, nc, path + [(nr, nc)], index + 1))
+    return []
+
+
+print(find_word_bfs(grid1, word1))
 
 def dfs(grid, r, c, word, result, visited, index):
     m = len(grid)
@@ -26,8 +52,8 @@ def dfs(grid, r, c, word, result, visited, index):
     if index == len(word) - 1:
         return True
 
-    found = (dfs(grid, r + 1, c, word, result, visited, index + 1) or dfs(grid, r, c + 1, word, result, visited,
-                                                                          index + 1))
+    found = (dfs(grid, r + 1, c, word, result, visited, index + 1) or
+             dfs(grid, r, c + 1, word, result, visited,index + 1))
 
     if found:
         return True

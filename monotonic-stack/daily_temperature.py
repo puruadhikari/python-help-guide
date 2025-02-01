@@ -19,7 +19,6 @@ class Solution:
         stack = []
         output = []
         result = [-1] * len(temperatures)
-
         for i in range(len(temperatures)):
             while stack and temperatures[i] > temperatures[stack[-1]]:
                 index = stack.pop()

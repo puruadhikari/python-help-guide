@@ -6,7 +6,7 @@ Write a function that takes in a list of (student ID number, course name) pairs 
 for every pair of students, a list of all courses they share.
 
 NOTE, IMP : See how set is used to get the intersections of two items
-NOTE : See the clever use of combinations
+NOTE : See the clever use of combinations and set
 """
 student_course_pairs_1 = [
   ["58", "Software Design"],
