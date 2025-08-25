@@ -4,28 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>American Express Platinum Credit Card: A Guide to Exclusive Privileges</title>
-  <!--
-    The base styles below are pulled directly from the American Express test
-    page (dls-upgrade-testing0.html) via the <style id="dls-styles-root">
-    element in its source. These rules govern icon sizing and display; they
-    have been copied verbatim to honour the request to include all CSS from
-    the reference page.
-  -->
   <style id="dls-styles-root">
 [data-dls-glyph] svg,[data-dls-icon] svg{display:inline-block;overflow:visible}[data-dls-glyph]{display:flex;align-items:center;justify-content:center}[data-dls-glyph] svg{height:.75rem;width:.75rem}[data-dls-glyph][data-dls-glyph-size=sm] svg{height:.75rem;width:.75rem}[data-dls-glyph][data-dls-glyph-size=md] svg{height:.875rem;width:.875rem}[data-dls-glyph][data-dls-glyph-size=lg] svg{height:1rem;width:1rem}[data-dls-icon]{display:flex;align-items:center;justify-content:center}[data-dls-icon] svg{height:1.375rem;width:1.375rem;vertical-align:0}[data-dls-icon][data-dls-icon-size=sm] svg{height:1.375rem;width:1.375rem;vertical-align:0}[data-dls-icon][data-dls-icon-size=md] svg{height:1.75rem;width:1.75rem;vertical-align:0}[data-dls-icon][data-dls-icon-size=lg] svg{height:3rem;width:3rem;vertical-align:-.05em}[data-dls-icon][data-dls-icon-size=xl] svg{height:3.875rem;width:3.875rem;vertical-align:-.1em}[data-dls-icon] svg[data-dls-icon-variant=filled]{display:none}[data-dls-icon]:hover svg[data-dls-icon-variant=outline]{display:none}[data-dls-icon]:hover svg[data-dls-icon-variant=filled]{display:inherit}[data-dls-icon][data-dls-icon-variant=filled] svg{display:inherit!important}[data-dls-icon][data-dls-icon-variant=outline] svg{display:inherit!important}a:hover [data-dls-icon]:not([data-dls-icon-variant]) svg[data-dls-icon-variant=outline],a:hover [data-dls-icon][data-dls-icon-variant=interactive] svg[data-dls-icon-variant=outline],button:hover [data-dls-icon]:not([data-dls-icon-variant]) svg[data-dls-icon-variant=outline],button:hover [data-dls-icon][data-dls-icon-variant=interactive] svg[data-dls-icon-variant=outline]{display:none}a:hover [data-dls-icon]:not([data-dls-icon-variant]) svg[data-dls-icon-variant=filled],a:hover [data-dls-icon][data-dls-icon-variant=interactive] svg[data-dls-icon-variant=filled],button:hover [data-dls-icon]:not([data-dls-icon-variant]) svg[data-dls-icon-variant=filled],button:hover [data-dls-icon][data-dls-icon-variant=interactive] svg[data-dls-icon-variant=filled]{display:inherit}
   </style>
-  <!--
-    Additional styles added to approximate the look and feel of the American
-    Express Design Language System (DLS). Colours and typographic rules
-    reference brand guidelines (e.g. Amex blue #016FD0) and are organised to
-    mirror the clean, spacious layout typical of American Express pages.
-  -->
+
   <style>
     :root {
       --amex-blue: #016FD0;
       --light-blue: #F5F9FC;
       --text-color: #333;
-      --max-content-width: 800px;
     }
 
     body {
@@ -36,32 +23,56 @@
       line-height: 1.6;
     }
 
-    header {
-      background-color: var(--amex-blue);
-      color: white;
-      padding: 2.5rem 1rem;
-      text-align: center;
+    /* Blue header section */
+    .header-banner {
+      width: 100%;
+      background-color: #002663; /* Deep Amex-style navy blue */
+      color: #ffffff;
+      padding: 16px 24px;
+      font-size: 24px;
+      font-weight: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
     }
 
-    header h1 {
+    .header-banner h1 {
       margin: 0;
-      font-size: 2.2rem;
-      font-weight: 600;
+      font-size: 1.2em;
+      font-weight: 50;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .header-icons i {
+      cursor: pointer;
+      font-size: 18px;
+      color: #ffffff;
+    }
+
+    /* Key info + content now 100% wide */
+    .key-information, main {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 1.5rem 2rem;
+      margin: 0; /* remove centering */
     }
 
     .key-information {
       background-color: var(--light-blue);
-      margin: 2rem auto;
-      padding: 1.5rem;
-      border-radius: 8px;
-      max-width: var(--max-content-width);
+      border-radius: 0; /* remove rounded box so it feels full width */
+      /*border-left: 4px solid var(--amex-blue);*/
     }
 
     .key-information h2 {
       margin-top: 0;
       color: var(--amex-blue);
-      font-size: 1.4rem;
-      font-weight: 600;
+      font-size: 1.6rem;
+      font-weight: 400;
     }
 
     .key-information ul {
@@ -77,18 +88,12 @@
     .key-information a {
       text-decoration: none;
       color: var(--amex-blue);
-      font-weight: 500;
+      font-weight: 300;
       transition: color 0.2s ease;
     }
 
     .key-information a:hover {
       text-decoration: underline;
-    }
-
-    main {
-      max-width: var(--max-content-width);
-      margin: 0 auto;
-      padding: 0 1rem;
     }
 
     section {
@@ -97,9 +102,9 @@
 
     section h2 {
       margin-bottom: 0.5rem;
-      color: var(--amex-blue);
-      font-size: 1.6rem;
-      font-weight: 600;
+      color: #002663;
+      font-size: 1.4rem;
+      font-weight: 200;
     }
 
     section p {
@@ -110,12 +115,17 @@
   </style>
 </head>
 <body>
-  
-  <!--
-    Key information section acting as a table of contents. Each link points
-    to the corresponding section below. This makes it easy for readers to
-    jump directly to areas of interest within the document.
-  -->
+  <!-- New banner title section -->
+  <div class="header-banner">
+    <h1>American Express Platinum Credit Card: A Guide to Exclusive Privileges</h1>
+    <div class="header-icons">
+      <i class="icon-share">🔗</i>
+      <i class="icon-bookmark">🔖</i>
+      <i class="icon-bell">🔔</i>
+    </div>
+  </div>
+
+  <!-- Key info nav -->
   <nav class="key-information" aria-label="Key information">
     <h2>Key Information</h2>
     <ul>
@@ -145,7 +155,7 @@
 
     <section id="hotel-dining">
       <h2>Hotel and Dining Privileges</h2>
-      <p>Gain automatic elite status with a number of hotel loyalty programs, such as Marriott&nbsp;Bonvoy Gold&nbsp;Elite and Hilton&nbsp;Honors Gold. This often includes benefits like room upgrades, late check‑out, and daily breakfast for two. Additionally, you may receive discounts on dining at select restaurants and other exclusive culinary experiences.</p>
+      <p>Gain automatic elite status with a number of hotel loyalty programs, such as Marriott&nbsp;Bonvoy Gold&nbsp;Elite and Hilton&nbsp;Honors Gold. This often includes benefits like room upgrades, late check-out, and daily breakfast for two. Additionally, you may receive discounts on dining at select restaurants and other exclusive culinary experiences.</p>
     </section>
 
     <section id="other-perks">
